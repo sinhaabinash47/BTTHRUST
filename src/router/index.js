@@ -7,7 +7,7 @@ import Showdata from "../views/Showdata.vue"
 
 const routes = [
   {
-    path: "/",
+    path: "/registration",
     name: "registration",
     component: Registration,
   },

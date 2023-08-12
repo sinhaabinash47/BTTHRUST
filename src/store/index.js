@@ -15,7 +15,6 @@ export default createStore({
       localStorage.setItem("formData", JSON.stringify(data));
     },
     updatestoreonlogin(state, payload){
-      console.log( "updatestoreonlogin => ", { payload });
       state.formData = {}
       state.formData = {...payload}
     },

@@ -50,7 +50,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(item, index) in displayedItems" :key="index">
+                                <tr v-for="(item, index) in displayedItemsTable" :key="index">
                                     <td>{{ item.id }}</td>
                                     <td>{{ item.title }}</td>
                                     <td>{{ item.content }}</td>
@@ -121,15 +121,15 @@ export default {
         totalPages() {
             return Math.ceil(this.items.length / this.itemsPerPage);
         },
-        displayedItems() {
+        displayedItemsTable() {
             const startIndex = (this.page - 1) * this.itemsPerPage;
             const endIndex = startIndex + this.itemsPerPage;
 
             const sortedItems = this.items
                 .filter(item => {
-                    const titleMatches = item.title.toLowerCase().includes(this.searchTitle.toLowerCase());
-                    const contentMatches = item.content.toLowerCase().includes(this.searchContent.toLowerCase());
-                    return titleMatches && contentMatches;
+                    const titlesearch = item.title.toLowerCase().includes(this.searchTitle.toLowerCase());
+                    const contentsearch = item.content.toLowerCase().includes(this.searchContent.toLowerCase());
+                    return titlesearch && contentsearch;
                 })
                 .sort((a, b) => {
                     const modifier = this.sortDesc ? -1 : 1;
@@ -167,7 +167,6 @@ export default {
                 const formdata = new FormData();
                 formdata.append("title", this.titleName);
                 formdata.append("content", this.contentName);
-                console.log("selectedImage => ", this.selectedImage);
                 formdata.append("photo", this.selectedImage[0]);
                 const requestOptions = {
                     method: "POST",
