@@ -167,7 +167,7 @@ export default {
                 const formdata = new FormData();
                 formdata.append("title", this.titleName);
                 formdata.append("content", this.contentName);
-                formdata.append("photo", this.selectedImage[0]);
+                formdata.append("photo", this.selectedImage);
                 const requestOptions = {
                     method: "POST",
                     body: formdata,
